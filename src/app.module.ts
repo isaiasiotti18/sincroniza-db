@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { SincronizaModule } from './sincroniza/sincroniza.module';
-import { DbClienteModule } from './db-cliente/db-cliente.module';
+import { DbClientConnectModule } from './db-client-connect/db-client-connect.module';
+import { LocalDatabaseModule } from './database/local-database.module';
 
 @Module({
-  imports: [SincronizaModule, DbClienteModule],
+  imports: [DbClientConnectModule, LocalDatabaseModule],
   controllers: [],
   providers: [],
 })
