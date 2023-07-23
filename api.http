@@ -1,0 +1,13 @@
+### DB INFORMATIONS
+POST http://localhost:3000/db-client-connect/create
+Content-Type: application/json
+
+{
+  "id": 450,
+  "host": "srvdbclient",
+  "password": "senha@123",
+  "port": 8080,
+  "type": "mysql",
+  "username": "isaiasiotti",
+  "db_name": "default"
+}

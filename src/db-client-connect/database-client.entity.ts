@@ -1,8 +1,16 @@
-import { Model } from 'sequelize';
-import { Column, Table } from 'sequelize-typescript';
+import {
+  Column,
+  Table,
+  Model,
+  CreatedAt,
+  UpdatedAt,
+} from 'sequelize-typescript';
 
 @Table
 export class DatabaseClient extends Model {
+  @Column({ primaryKey: true })
+  id: number;
+
   @Column
   type: string;
 
@@ -17,4 +25,7 @@ export class DatabaseClient extends Model {
 
   @Column
   port: number;
+
+  @Column
+  db_name: string;
 }

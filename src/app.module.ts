@@ -5,6 +5,6 @@ import { LocalDatabaseModule } from './database/local-database.module';
 @Module({
   imports: [DbClientConnectModule, LocalDatabaseModule],
   controllers: [],
-  providers: [],
+  providers: [], //
 })
 export class AppModule {}
