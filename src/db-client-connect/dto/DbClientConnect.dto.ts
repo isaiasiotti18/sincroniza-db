@@ -1,6 +1,4 @@
 export class DbClientConnectDto {
-  id: number;
-
   type: string;
 
   host: string;
