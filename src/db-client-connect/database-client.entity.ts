@@ -12,7 +12,15 @@ export class DatabaseClient extends Model {
   id: number;
 
   @Column
-  type: string;
+  type:
+    | 'mysql'
+    | 'postgres'
+    | 'sqlite'
+    | 'mariadb'
+    | 'mssql'
+    | 'db2'
+    | 'snowflake'
+    | 'oracle';
 
   @Column
   host: string;

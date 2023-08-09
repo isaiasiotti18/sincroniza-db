@@ -7,8 +7,13 @@ import { resolve } from 'path';
   imports: [
     SequelizeModule.forRoot({
       dialect: 'sqlite',
-      storage: resolve(__dirname, './local-storage.sqlite'),
-      synchronize: true,
+      storage: resolve(
+        __dirname,
+        '..',
+        '..',
+        'database',
+        './local-storage.sqlite',
+      ),
       models: [DatabaseClient],
     }),
   ],
