@@ -32,4 +32,20 @@ export class DbClientConnectDto {
   @IsString()
   @IsNotEmpty()
   db_name: string;
+
+  @IsString()
+  @IsNotEmpty()
+  table_name: string;
+
+  @IsString()
+  @IsNotEmpty()
+  product_columnName: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  product_columnPrice: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  product_columnQtd: number;
 }

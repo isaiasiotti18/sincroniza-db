@@ -28,18 +28,16 @@ export class CreateConnectionWithDatabase {
 
     await connection.authenticate();
 
-    const result = await connection.query('SELECT * FROM produtos', {
+    await connection.query('SELECT * FROM produtos', {
       type: QueryTypes.SELECT,
     });
-
-    console.log(result);
 
     await connection.close();
   }
 
   private async getConnectionDataFromDatabase(): Promise<DbClientConnectDto> {
     const database = await this.databaseClientModel.findOne({
-      where: { id: 0 },
+      where: { active: true },
     });
 
     return await {
@@ -49,6 +47,10 @@ export class CreateConnectionWithDatabase {
       password: database.password,
       port: database.port,
       db_name: database.db_name,
+      table_name: database.table_name,
+      product_columnName: database.product_columnName,
+      product_columnPrice: database.product_columnPrice,
+      product_columnQtd: database.product_columnQtd,
     };
   }
 

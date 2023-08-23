@@ -1,15 +1,12 @@
-import {
-  Column,
-  Table,
-  Model,
-  CreatedAt,
-  UpdatedAt,
-} from 'sequelize-typescript';
+import { Column, Table, Model } from 'sequelize-typescript';
 
 @Table
 export class DatabaseClient extends Model {
   @Column({ primaryKey: true })
   id: number;
+
+  @Column
+  active: boolean;
 
   @Column
   type:
@@ -36,4 +33,16 @@ export class DatabaseClient extends Model {
 
   @Column
   db_name: string;
+
+  @Column
+  table_name: string;
+
+  @Column
+  product_columnName: string;
+
+  @Column
+  product_columnPrice: number;
+
+  @Column
+  product_columnQtd: number;
 }

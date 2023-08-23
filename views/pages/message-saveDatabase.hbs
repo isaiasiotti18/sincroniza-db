@@ -1,0 +1,19 @@
+{{> head}}
+  <div class="container-fluid p-5">
+    <div class="row justify-content-center">
+      <div class="col-10">
+        {{#if errorMessage}}
+          <h2 align="center">{{errorMessage}}</h2>
+          <p class="text-center">
+            <a href="#">Volte a lista de banco de dados cadastrados.</a>
+          </p>
+        {{else}}
+          <h2 align="center">Cadastro realizado com sucesso!</h2>
+          <p class="text-center">
+            <a href="#">Volte a lista de banco de dados cadastrados.</a>
+          </p>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+{{> footer}}
