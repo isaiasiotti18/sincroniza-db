@@ -1,16 +1,24 @@
-import { faker } from '@faker-js/faker';
+import { fakerDE as faker } from '@faker-js/faker';
 import { Sequelize } from 'sequelize-typescript';
 
 type Product = {
+  codigo: number;
   descricao: string;
   preco: number;
   qtd: number;
 };
 
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 const productArray: Array<Product> = [];
 
 for (let i = 0; i < 950; i++) {
   const product: Product = {
+    codigo: getRandomIntInclusive(55, 99999) + 88,
     descricao:
       faker.commerce.product() +
       ' ' +
@@ -40,7 +48,7 @@ async function connectDB() {
 
     for await (const product of productArray) {
       await connect.query(`
-        INSERT INTO produtos (descricao, preco, estoque)
+        INSERT INTO produtos (codigo, descricao, preco, estoque)
         VALUES ("${product.descricao}", ${product.preco}, ${product.qtd});
       `);
     }

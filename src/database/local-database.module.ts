@@ -1,14 +1,15 @@
 import { DatabaseClient } from './../db-client-connect/database-client.entity';
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { resolve } from 'path';
+import { join } from 'path';
 
 @Module({
   imports: [
     SequelizeModule.forRoot({
       dialect: 'sqlite',
-      storage: resolve(
+      storage: join(
         __dirname,
+        '..',
         '..',
         '..',
         'database',

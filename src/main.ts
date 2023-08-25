@@ -17,10 +17,10 @@ async function bootstrap() {
 
   app.use(cookieParser());
 
-  app.useStaticAssets(join(__dirname, '..', 'public'));
-  app.setBaseViewsDir(join(__dirname, '..', 'views', 'pages'));
+  app.useStaticAssets(join(__dirname, '..', '..', 'public'));
+  app.setBaseViewsDir(join(__dirname, '..', '..', 'views', 'pages'));
   app.setViewEngine('hbs');
-  hbs.registerPartials(join(__dirname, '..', 'views', 'partials'));
+  hbs.registerPartials(join(__dirname, '..', '..', 'views', 'partials'));
 
   await app.listen(3008);
 }
