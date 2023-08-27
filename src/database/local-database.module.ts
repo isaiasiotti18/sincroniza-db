@@ -11,7 +11,6 @@ import { join } from 'path';
         __dirname,
         '..',
         '..',
-        '..',
         'database',
         './local-storage.sqlite',
       ),

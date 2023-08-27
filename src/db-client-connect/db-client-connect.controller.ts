@@ -1,6 +1,9 @@
 import { Controller, Get, Post, Redirect, Render, Req } from '@nestjs/common';
 import { SaveDatabaseClienteService } from './services/save-database-cliente.service';
-import { CreateConnectionWithDatabase } from './services/create-connection-with-database.service';
+import {
+  CreateConnectionWithDatabase,
+  Product,
+} from './services/create-connection-with-database.service';
 import { Request } from 'express';
 import { ListDatabasesService } from './services/list-databases.service';
 import { Throttle } from '@nestjs/throttler';
@@ -83,7 +86,23 @@ export class DbClientConnectController {
 
   //@Throttle(3, 60)
   @Post('send-to-application')
-  async sendDataApplicationPOST() {
-    return await this.createConnectionWithDatabase.connectDatabase();
+  async sendDataApplicationPOST(): Promise<any> {
+    const result = await this.createConnectionWithDatabase.connectDatabase();
+
+    // console.log(JSON.stringify(result));
+
+    const response = await fetch(
+      'http://localhost:4008/dbmainsell/synchronize',
+      {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(result),
+      },
+    );
+
+    return await {
+      statusCode: 200,
+      response: await response,
+    };
   }
 }

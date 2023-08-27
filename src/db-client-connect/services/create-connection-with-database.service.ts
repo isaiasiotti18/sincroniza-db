@@ -5,6 +5,13 @@ import { InjectModel } from '@nestjs/sequelize';
 import { DatabaseClient } from '../database-client.entity';
 import { QueryTypes } from 'sequelize';
 
+export type Product = {
+  codigo: number;
+  descricao: string;
+  preco: number;
+  estoque: number;
+};
+
 @Injectable()
 export class CreateConnectionWithDatabase {
   constructor(
@@ -14,7 +21,7 @@ export class CreateConnectionWithDatabase {
     private clientConnection: Sequelize,
   ) {}
 
-  async connectDatabase(): Promise<any> {
+  async connectDatabase(): Promise<Product[]> {
     const connectionData = await this.getConnectionDataFromDatabase();
 
     const connection = (this.clientConnection = await new Sequelize({
@@ -28,11 +35,13 @@ export class CreateConnectionWithDatabase {
 
     await connection.authenticate();
 
-    await connection.query('SELECT * FROM produtos', {
+    const result = (await connection.query('SELECT * FROM produtos', {
       type: QueryTypes.SELECT,
-    });
+    })) as Product[];
 
     await connection.close();
+
+    return await result;
   }
 
   private async getConnectionDataFromDatabase(): Promise<DbClientConnectDto> {

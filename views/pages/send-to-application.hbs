@@ -33,7 +33,9 @@
       await spinner01.classList.remove('invisible')
       await textSpinner.classList.remove('invisible')
 
-      const result = await fetch('http://localhost:3008/db-client-connect/send-to-application', { method: 'POST' })
+      const result = await fetch('http://localhost:3008/db-client-connect/send-to-application', {
+        method: 'POST',
+      })
 
       if(result.ok) {
         await spinner01.classList.add('invisible')

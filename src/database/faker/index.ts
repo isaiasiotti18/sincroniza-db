@@ -49,7 +49,7 @@ async function connectDB() {
     for await (const product of productArray) {
       await connect.query(`
         INSERT INTO produtos (codigo, descricao, preco, estoque)
-        VALUES ("${product.descricao}", ${product.preco}, ${product.qtd});
+        VALUES (${product.codigo}, "${product.descricao}", ${product.preco}, ${product.qtd});
       `);
     }
 
